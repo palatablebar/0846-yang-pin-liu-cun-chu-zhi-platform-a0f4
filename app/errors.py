@@ -1,6 +1,3 @@
-from flask import jsonify
-
-
 MESSAGES = {
     "EMPTY_FILE": "文件为空",
     "BLANK_FILE": "文件只有空白",
@@ -18,6 +15,8 @@ MESSAGES = {
     "GATE_BLOCKED": "存在阻断项，不能签发",
     "NOT_APPROVED": "批次尚未签发",
     "BAD_REQUEST": "请求内容不完整",
+    "SCENARIO_UNKNOWN": "腾库场景不存在",
+    "CLEARANCE_GATE_BLOCKED": "腾库计划未通过规则核对，不能签发",
 }
 
 
@@ -30,4 +29,7 @@ class DomainIssue(Exception):
 
 
 def error_response(exc: DomainIssue):
-    return jsonify(error=exc.detail or MESSAGES.get(exc.code, "请求无法处理"), code=exc.code), exc.status
+    from flask import jsonify
+
+    return jsonify(error=exc.detail or MESSAGES.get(exc.code, "请求无法处理"),
+                   code=exc.code), exc.status

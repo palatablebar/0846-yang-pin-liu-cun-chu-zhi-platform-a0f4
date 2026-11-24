@@ -1,0 +1,10 @@
+.p0846 .clearance-shell .nav-link {
+  display: block; text-align: left; border: 0; background: transparent;
+  padding: .55em .7em; color: var(--ink); text-decoration: none; border-radius: var(--radius);
+}
+.p0846 .clearance-shell .nav-link:hover { background: var(--soft); }
+.p0846 .plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.p0846 .plan-grid label { display: grid; gap: 4px; color: var(--muted); font-size: 12px; }
+.p0846 .plan-grid input { width: 100%; }
+.p0846 .rule-list { margin: 0 0 12px; padding-left: 1.1em; display: grid; gap: 6px; color: var(--muted); }
+.p0846 #panel-rules, .p0846 #panel-result, .p0846 #panel-batches { grid-column: 1/-1; }

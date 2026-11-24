@@ -23,5 +23,6 @@ docker compose config --quiet
 2. 选择 `dirty` 样例观察坏行和隔离原因。
 3. 换 `clean` 样例执行批次，填写复核意见后签发。
 4. 下载证据 JSON，核对来源摘要、指标和签发版本。
+5. 打开 `/clearance` 核对月度腾库计划：选场景、填两份计划的箱号，先“核对计划”查看违规与最优解，再带 `request_key`“同时提交签发”；同键重试幂等，不重复占用月限额。
 
-业务规则见 `docs/BUSINESS-RULES.md`，字段定义见 `docs/DATA-DICTIONARY.md`。
+业务规则见 `docs/BUSINESS-RULES.md`，字段定义见 `docs/DATA-DICTIONARY.md`，接口见 `docs/HTTP.md`。

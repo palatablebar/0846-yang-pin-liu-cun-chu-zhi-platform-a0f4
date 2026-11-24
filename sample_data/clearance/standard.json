@@ -1,0 +1,30 @@
+{
+  "name": "月度腾库标准场景",
+  "month_end": "2026-11-30",
+  "monthly_limit": 10,
+  "samples": [
+    {"sample_id": "A1", "box_id": "B1", "disposable_from": "2026-11-05"},
+    {"sample_id": "A2", "box_id": "B1", "disposable_from": "2026-11-08"},
+    {"sample_id": "A3", "box_id": "B1", "disposable_from": "2026-11-12"},
+    {"sample_id": "A4", "box_id": "B1", "disposable_from": "2026-11-20"},
+
+    {"sample_id": "B1S", "box_id": "B2", "disposable_from": "2026-11-02"},
+    {"sample_id": "B2S", "box_id": "B2", "disposable_from": "2026-11-03"},
+    {"sample_id": "B3S", "box_id": "B2", "disposable_from": "2026-11-04"},
+    {"sample_id": "B4S", "box_id": "B2", "disposable_from": "2026-11-06"},
+    {"sample_id": "B5S", "box_id": "B2", "disposable_from": "2026-11-09"},
+    {"sample_id": "B6S", "box_id": "B2", "disposable_from": "2026-11-11"},
+    {"sample_id": "B7S", "box_id": "B2", "disposable_from": "2026-11-13"},
+    {"sample_id": "B8S", "box_id": "B2", "disposable_from": "2026-11-15"},
+
+    {"sample_id": "C1", "box_id": "B3", "disposable_from": "2026-11-10"},
+    {"sample_id": "C2", "box_id": "B3", "disposable_from": "2026-11-18"},
+    {"sample_id": "C3", "box_id": "B3", "disposable_from": "2026-11-25"},
+
+    {"sample_id": "D1", "box_id": "B4", "disposable_from": "2026-11-01"},
+    {"sample_id": "D2", "box_id": "B4", "disposable_from": "2026-12-15"},
+
+    {"sample_id": "E1", "box_id": "B5", "disposable_from": "2026-11-03", "blocked": true},
+    {"sample_id": "E2", "box_id": "B5", "disposable_from": "2026-11-07"}
+  ]
+}

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>月度腾库计划核对 · 样品留存处置台</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='theme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='clearance.css') }}">
+</head>
+<body class="p0846">
+<div class="shell clearance-shell">
+  <nav class="rail" aria-label="工作台导航">
+    <a class="brand" href="/">留样</a>
+    <p class="rail-label">腾库核对</p>
+    <div id="stage-nav">
+      <a class="nav-link" href="/">留存处置批次</a>
+      <button type="button" aria-pressed="true">月度腾库计划</button>
+    </div>
+    <p class="rail-note">v1.0 · 本地批次</p>
+  </nav>
+  <div class="work">
+    <header class="toolbar">
+      <div>
+        <p class="actor">生物样本库管理员</p>
+        <h1>月度腾库计划核对</h1>
+      </div>
+      <div class="tools">
+        <span class="rule-chip">先多腾箱，同数看到期</span>
+        <label>场景 <select id="scenario"></select></label>
+      </div>
+    </header>
+    <main>
+      <section class="kpis" aria-label="关键指标">
+        <article class="metric"><span>月末</span><strong id="m-month">--</strong></article>
+        <article class="metric"><span>月限额（件）</span><strong id="m-limit">--</strong></article>
+        <article class="metric"><span>可腾空箱</span><strong id="m-ready">--</strong></article>
+        <article class="metric"><span>最多可腾箱</span><strong id="m-max">--</strong></article>
+      </section>
+
+      <section class="board">
+        <article class="panel" id="panel-boxes">
+          <div class="panel-head"><h2>箱子台账</h2><span class="hint" id="box-hint">到期日=最后一件可处置日</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>箱号</th><th class="num">件数</th><th>到期日</th><th>状态</th></tr></thead>
+              <tbody id="box-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel" id="panel-rules">
+          <div class="panel-head"><h2>核对规则</h2></div>
+          <ul class="rule-list">
+            <li>月限额按样品件数；整箱有样品月底不能处置则不排。</li>
+            <li>优先多腾空箱；同样多再看箱到期日，早的优先。</li>
+            <li>两份计划同箱互斥，合计件数不得超月限额。</li>
+            <li>同 request_key 重试幂等，不重复占额度。</li>
+          </ul>
+          <div class="ledger" id="optimal-view"></div>
+        </article>
+
+        <article class="panel" id="panel-plans">
+          <div class="panel-head"><h2>两份待签发计划</h2><span class="hint">逗号分隔箱号</span></div>
+          <div class="plan-grid">
+            <label>计划 A 箱号<input id="plan-a" type="text" placeholder="B1,B3"></label>
+            <label>计划 B 箱号<input id="plan-b" type="text" placeholder="B2"></label>
+            <label>request_key<input id="request-key" type="text" placeholder="幂等键，如 req-2026-11-001"></label>
+            <label>复核意见<input id="comment" type="text" placeholder="可选"></label>
+          </div>
+          <div class="review-actions">
+            <button id="check" type="button">核对计划</button>
+            <button id="issue" type="button">同时提交签发</button>
+          </div>
+        </article>
+
+        <article class="panel" id="panel-result">
+          <div class="panel-head"><h2>核对结果</h2><span class="hint" id="result-status">未核对</span></div>
+          <ul class="issues" id="violation-list"><li class="empty">尚未核对</li></ul>
+        </article>
+
+        <article class="panel" id="panel-batches">
+          <div class="panel-head"><h2>已签发计划</h2><span class="hint" id="batch-count">0 批</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>批次</th><th>场景</th><th>占用件数</th><th>腾空箱</th><th>状态</th><th>重试</th></tr></thead>
+              <tbody id="batch-body"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="statusbar">
+      <span id="notice" class="notice"></span>
+      <span id="run-status">月度腾库核对</span>
+      <span>0846 · 留样</span>
+    </footer>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='clearance.js') }}"></script>
+</body>
+</html>

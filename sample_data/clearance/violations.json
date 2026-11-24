@@ -1,0 +1,18 @@
+{
+  "name": "月度腾库违规对照场景",
+  "month_end": "2026-11-30",
+  "monthly_limit": 6,
+  "samples": [
+    {"sample_id": "P1", "box_id": "X1", "disposable_from": "2026-11-04"},
+    {"sample_id": "P2", "box_id": "X1", "disposable_from": "2026-11-07"},
+    {"sample_id": "P3", "box_id": "X1", "disposable_from": "2026-11-11"},
+
+    {"sample_id": "Q1", "box_id": "X2", "disposable_from": "2026-11-02"},
+    {"sample_id": "Q2", "box_id": "X2", "disposable_from": "2026-11-05"},
+
+    {"sample_id": "R1", "box_id": "X3", "disposable_from": "2026-11-09"},
+    {"sample_id": "R2", "box_id": "X3", "disposable_from": "2026-12-20"},
+
+    {"sample_id": "T1", "box_id": "X4", "disposable_from": "2026-11-06", "blocked": true}
+  ]
+}
